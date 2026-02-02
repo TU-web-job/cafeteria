@@ -1,0 +1,103 @@
+.signin {
+    width: 100%;
+    padding: 24px;
+    background-color: #eedcb3;
+    color: #332f26;
+}
+
+.signinForm {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #789;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: #fff;
+}
+
+.signin h2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.inputLabel {
+    display: grid;
+    grid-template-columns: 10em minmax(260px, 1fr);
+    column-gap: 12px;
+    align-items: center;
+    padding: 4px;
+}
+
+.inputLabel label {
+    grid-column: 1;
+    font-weight: bold;
+    flex: 0 0 10em;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.inputLabel input {
+    grid-column: 2;
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 70%;
+    box-sizing: border-box;
+    margin-left: 12px;
+    border-radius: 4px;
+}
+
+.error {
+    grid-column: 2;
+    justify-self: end;
+    margin-top: 4px;
+    color: #dc143c;
+    
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 8px;
+    background-color: #1e90ff;
+    border: none;
+    color: #fff;
+    display: block;
+    margin: 12px auto 0;
+    box-shadow: #332f26;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:active {
+    background-color: #fff;
+    border: 1px solid #1e90ff;
+    color: #1e90ff;
+}
+
+.toLogin {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    margin-top: 12px;
+}
+
+.toLogin:hover {
+    color: #1e90ff;
+}
+
+@media (max-width: 480px){
+    .inputLabel {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputLabel label {
+        flex-basis: 8em;
+        white-space: normal;
+        text-align: left;
+    }
+}

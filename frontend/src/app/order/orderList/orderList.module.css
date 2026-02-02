@@ -1,0 +1,77 @@
+.orderList {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.table, .detailTable {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.table,
+.table thead {
+    border-bottom: 4px double #DEB887;
+}
+
+.table thead tr th {
+    margin-right: 8px;
+}
+
+.table tbody tr, .detailTable tbody tr {
+    border-bottom: 1px solid #DEB887;
+}
+
+.table tbody tr td ,
+.detailTable tbody tr td {
+    margin-right: 12px;
+    padding: 8px;
+}
+
+.detailBtn {
+    border: none;
+    border-radius: 8px;
+    background-color: #A0522D;
+    color: aliceblue;
+    padding: 8px;
+}
+
+/* detail */
+
+.orderDetail {
+    padding: 20px;
+}
+
+.orderDate span,
+.total span {
+    font-weight: bold;
+}
+
+.orderDate,
+.total {
+    margin-top: 12px;
+    padding: 8px;
+    display: flex;
+    justify-content: end;
+}
+
+.totalItem {
+    margin-right: 12px;
+}
+
+.link {
+    text-decoration: underline;
+    color: #A0522D;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.link:hover {
+    text-decoration: none;
+}
+
+.link:active {
+    color: aliceblue;
+    text-decoration: none;
+}

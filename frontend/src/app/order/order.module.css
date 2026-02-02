@@ -1,0 +1,141 @@
+.order {
+    margin: 0 auto;
+    width: 100%;
+    background-color: #F8F8FF;
+}
+
+.order h2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color:#8b4513;
+}
+
+.orderForm {
+    padding: 10px;
+}
+
+.radioBtn {
+    border: 1.5px solid #8b4513;
+    border-radius: 8px;
+    padding: 8px;
+    width: fit-content;
+    background-color: #F8F8FF;
+}
+
+.radio {
+    margin-right: 12px;
+}
+
+.drinkWrapper, .foodWrapper, .totalWrapper {
+    border-top: 1px solid #D2B48C;
+    margin-top: 12px;
+    padding: 12px;
+}
+
+.orderSelect {
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1px solid #8b4513;
+}
+
+.orderContent {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.drinkWrapper h3, .foodWrapper h3 {
+    grid-column: 1 / -1;
+    justify-self: center;
+    text-align: center;
+    color:#8b4513;
+}
+
+.orderItem {
+    border: 1.5px solid #8b4513;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 8px;
+    background-color: #F8F8FF;
+}
+
+.count, .orderBtnWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.count span {
+    padding: 0 8px;
+}
+
+.itemTotal {
+    grid-column: 1 / -1;
+    justify-self: center;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.itemTotal span, .totalWrapper span {
+    font-weight: bold;
+}
+
+.totalWrapper {
+    display: grid;
+    justify-content: end;
+}
+
+.totalWrapper p {
+    margin-top: 8px;
+}
+
+.mnsBtn {
+    background-color: #fc0;
+    border-radius: 20px;
+    padding: 6px;
+    border: none;
+}
+
+.plsBtn {
+    background-color: #30c;
+    color: #F8F8FF;
+    border-radius: 20px;
+    padding: 4px;
+    border: none;
+}
+
+.deleteBtn {
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    color: #F8F8FF;
+    background-color: #c30;
+}
+
+.orderBtn {
+    border: none;
+    border-radius: 4px;
+    color: #F8F8FF;
+    background-color: #800000;
+    padding: 8px;
+    box-shadow: 4px 4px 4px #696969;
+}
+
+.orderBtn:active {
+    border: 1px solid #800000;
+    color: #800000;
+    background-color: #F8F8FF;
+    box-shadow: none;
+}
+
+.link {
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+}
+
+.link:active {
+    color: aliceblue;
+    text-decoration: none;
+}

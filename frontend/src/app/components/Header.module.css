@@ -1,0 +1,43 @@
+.header {
+    width: 100%;
+    padding: 20px;
+    background-color: #ffebcd;
+    color: #8b4513;
+    display: flex;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 67.5px
+}
+
+.headerLogo {
+    font-weight: bold;
+}
+
+.listWrapper {
+    display: flex;
+    margin-left: auto;
+}
+
+.listContents {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 8px;
+}
+
+.headerList {
+    list-style: none;
+    text-decoration: underline;
+}
+
+.headerList:hover {
+    color: #2255ee;
+}
+
+.headerList:active {
+    text-decoration: none;
+    color: #2255ee;
+}
