@@ -1,0 +1,32 @@
+.recruit {
+    padding: 24px;
+}
+
+.title {
+    color: #CD853F;
+    text-decoration: underline;
+    text-decoration-style: double;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #DEB887;
+    text-underline-offset: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.rTable {
+    border: 2px solid #DEB887;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.rTable tbody tr th,
+.rTable tbody tr td {
+    border-bottom: 1px solid #FFE4C4;
+    padding: 12px;
+}
+
+.rTable tbody tr th {
+    border-right: 1px solid #FFE4C4;
+    text-align: left;
+}

@@ -60,7 +60,7 @@ export default function OrderDetail(){
             <section className={s.total}>
                 <label className={s.totalItem}><span>獲得ポイント</span> : {data.totalPoint} Pt</label>
                 <label className={s.totalItem}><span>小計</span> : {data.subtotal} Yen</label>
-                <label className={s.totalItem}><span>合計金額 </span>: {data.totalPrice}</label>
+                <label className={s.totalItem}><span>合計金額 </span>: {data.totalPrice} Yen</label>
             </section>
             <p><a href="/order/orderList" className={s.link}>注文履歴一覧はこちら</a></p>
         </main>

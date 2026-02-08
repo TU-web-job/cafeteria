@@ -12,7 +12,8 @@ const headerList: headerType[] = [
     {index: 1, title: "トップ", link: "/"},
     {index: 2, title: "メニュー", link: "/menu"},
     {index: 3, title: "注文", link: "/order"},
-    {index: 4, title: "マイページ", link: "/user/mypage"},
+    {index: 4, title: "求人", link:"/recruit"},
+    {index: 5, title: "マイページ", link: "/user/mypage"},
 ]
 
 export default function Header(){

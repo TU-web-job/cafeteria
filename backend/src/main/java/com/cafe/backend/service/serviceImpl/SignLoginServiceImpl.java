@@ -44,6 +44,7 @@ public class SignLoginServiceImpl implements SignLoginService{
         public static final int ADMIN = 9;
 
         private Role(){}
+        
     }
 
     public static final class Staff {
@@ -58,9 +59,13 @@ public class SignLoginServiceImpl implements SignLoginService{
     @Override
     @Transactional
     public UserEntity signinCustomer(SignupDTO dto){
+        if(dto == null) throw new IllegalArgumentException("dto is null");
+        if(isBlank(dto.getUserName())) throw new IllegalArgumentException("username is null");
+        if(isBlank(dto.getEmail())) throw new IllegalArgumentException("Email is null");
+        if(isBlank(dto.getPassword())) throw new IllegalArgumentException("password is null");
+        
         UserEntity entity = signupDetail(dto);
         entity.setRole(Role.CUSTOMER);
-
 
         PointHistoryEntity pEntity = new PointHistoryEntity();
         pEntity.setTotalPoint(0);
@@ -142,5 +147,9 @@ public class SignLoginServiceImpl implements SignLoginService{
     private String staffCodeCreate(int userId) {
         String staffCode = String.format("ST%06d", userId);
         return staffCode;
+    }
+
+    private static boolean isBlank(String s) {
+        return s == null || s.trim().isEmpty();
     }
 }
