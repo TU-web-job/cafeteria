@@ -5,19 +5,25 @@
 
 package com.cafe.backend.service;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.ArgumentCaptor;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.isNull;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.verify;
@@ -26,6 +32,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.cafe.backend.dto.LoginDTO;
 import com.cafe.backend.dto.SignupDTO;
 import com.cafe.backend.entity.PointHistoryEntity;
 import com.cafe.backend.entity.UserEntity;
@@ -63,6 +70,13 @@ public class SignLoginServiceImplTest {
         d.setPhone(phone);
         d.setPassword(password);
         return d;
+    }
+
+    private static LoginDTO loginDTO(String email, String password) {
+        var l = new LoginDTO();
+        l.setEmail(email);
+        l.setPassword(password);
+        return l;
     }
 
     public static final class Role {
@@ -132,4 +146,62 @@ public class SignLoginServiceImplTest {
         }
     }
 
+    @Nested
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    @DisplayName("顧客ログイン")
+    class loginCustomerTest {
+
+        @Test
+        @DisplayName("正常ログイン")
+        void loginTest() {
+            var dto = new LoginDTO();
+            dto.setEmail("test@test.co.jp");
+            dto.setPassword("password");
+            
+            var entity = new UserEntity();
+            entity.setUserId(123);
+            entity.setUserName("TestName");
+            entity.setAddress("TestAddress");
+            entity.setEmail(dto.getEmail());
+            entity.setPhone("000-1111-2222");
+            entity.setPassword(dto.getPassword());
+
+            when(userRepo.findByEmailAndPassword(dto.getEmail(), dto.getPassword()))
+                .thenReturn(Optional.of(entity));
+
+            var ph = new PointHistoryEntity();
+            ph.setTotalPoint(10);
+            when(pointRepo.findTopByUserUserIdOrderByLastOrderDateDesc(123))
+                .thenReturn(Optional.of(ph));
+
+            var result = assertDoesNotThrow(() -> target.loginCustomer(dto));
+
+            assertThat(result.getUserId()).isEqualTo(123);
+            assertThat(result.getEmail()).isEqualTo(dto.getEmail());
+            assertThat(result.getTotalPoint()).isEqualTo(10);
+
+        }
+
+        Stream<Arguments> errorLogin() {
+            return Stream.of(
+                Arguments.of(
+                    loginDTO("error@test.co.jp", "error")),
+                Arguments.of(
+                    loginDTO("", "errorPassword")),
+                Arguments.of(
+                    loginDTO("error@test.co.jp", ""))
+            );
+        }
+
+        @ParameterizedTest(name = "[{index}]")
+        @MethodSource("errorLogin")
+        @DisplayName("AllError")
+        void loginEmailError(LoginDTO loginDTO) throws Exception {
+
+            when(userRepo.findByEmailAndPassword(loginDTO.getEmail(), loginDTO.getPassword()))
+                .thenReturn(Optional.empty());
+            assertThatThrownBy(() -> target.loginCustomer(loginDTO))
+                .isInstanceOf(NotFoundException.class);
+        }
+    }
 }
